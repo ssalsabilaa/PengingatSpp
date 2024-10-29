@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'Pengingat',
     'Kelas',
     'OrangTua',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
