@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from django.templatetags.static import static
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,7 +34,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    "unfold",  # before django.contrib.admin
+    "unfold.contrib.filters",  # optional, if special filters are needed
+    "unfold.contrib.forms",  # optional, if special form elements are needed
+    "unfold.contrib.inlines",  # optional, if special inlines are needed
+    "unfold.contrib.import_export",  # optional, if django-import-export package is used
+    "unfold.contrib.guardian",  # optional, if django-guardian package is used
+    "unfold.contrib.simple_history",  # optional, if django-simple-history package is used
+    "django.contrib.admin",  # required
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -140,3 +150,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+UNFOLD = {
+    "SITE_TITLE": "ajshashjahsjah",
+    "SITE_HEADER": "Sidebar",
+    "SITE_URL": "/",
+    "SITE_ICON": {
+        "light": lambda request: static("icon-light.svg"),  # Light mode icon
+        "dark": lambda request: static("icon-dark.svg"),  # Dark mode icon
+    },
+    "SITE_LOGO": {
+        "light": lambda request: static("logo-light.svg"),  # Light mode logo
+        "dark": lambda request: static("logo-dark.svg"),  # Dark mode logo
+    },
+    "SITE_SYMBOL": "speed",  # Symbol from icon set
+}

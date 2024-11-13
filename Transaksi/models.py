@@ -22,9 +22,9 @@ class Transaksi(models.Model):
 
     id = models.AutoField(primary_key=True)
     tanggal = models.DateField()
-    jenis_transaksi = models.CharField(max_length=20, choices=TRANSAKSI_CHOICES)
-    kategori_pemasukan = models.CharField(max_length=20, choices=PEMASUKAN_CHOICES, blank=True, null=True)
-    kategori_pengeluaran = models.CharField(max_length=20, choices=PENGELUARAN_CHOICES, blank=True, null=True)
+    jenis_transaksi = models.CharField(max_length=25, choices=TRANSAKSI_CHOICES)
+    kategori_pemasukan = models.CharField(max_length=25, choices=PEMASUKAN_CHOICES, blank=True, null=True)
+    kategori_pengeluaran = models.CharField(max_length=25, choices=PENGELUARAN_CHOICES, blank=True, null=True)
     jumlah = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
