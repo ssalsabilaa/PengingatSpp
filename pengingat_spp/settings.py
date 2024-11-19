@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'Pengingat',
     'Kelas',
     'OrangTua',
+    'pengingat_spp',
     'django_extensions'
 ]
 
@@ -152,16 +153,121 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 UNFOLD = {
-    "SITE_TITLE": "ajshashjahsjah",
-    "SITE_HEADER": "Sidebar",
+    "SITE_TITLE": "pengingat spp",
+    "SITE_HEADER": "EduPay Schools",
     "SITE_URL": "/",
     "SITE_ICON": {
-        "light": lambda request: static("icon-light.svg"),  # Light mode icon
-        "dark": lambda request: static("icon-dark.svg"),  # Dark mode icon
+        "light": lambda request: static("assets/sd.png"),  # Light mode icon
+        "dark": lambda request: static("assets/sd.png"),  # Dark mode icon
     },
-    "SITE_LOGO": {
-        "light": lambda request: static("logo-light.svg"),  # Light mode logo
-        "dark": lambda request: static("logo-dark.svg"),  # Dark mode logo
-    },
-    "SITE_SYMBOL": "speed",  # Symbol from icon set
+"SIDEBAR": {
+        "show_search": False,  # Search in applications and models names
+        "show_all_applications": False,  # Dropdown with all applications and models
+        "navigation": [
+            {
+                "title": _("Navigation"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Dashboard"),
+                        "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:index"),
+                        "permission": lambda request: request.user.is_superuser,
+                    }
+                ],
+            },
+            {
+                "title": _("Integrasi"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("WhatsApp"),
+                        "icon": "perm_phone_msg",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:Integrasi_whatsapp_changelist"),
+                        "permission": lambda request: request.user.is_superuser,
+                    }
+                ],
+            },
+            {
+                "title": _("Kelas"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Kelas"),
+                        "icon": "school",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:Kelas_kelas_changelist"),
+                        "permission": lambda request: request.user.is_superuser,
+                    }
+                ],
+            },
+            {
+                "title": _("Laporan"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Mutasi"),
+                        "icon": "currency_exchange",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:Laporan_mutasi_changelist"),
+                        "permission": lambda request: request.user.is_superuser,
+                    }
+                ],
+            },
+            {
+                "title": _("Orang Tua"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Orang Tua"),
+                        "icon": "person",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:OrangTua_orangtua_changelist"),
+                        "permission": lambda request: request.user.is_superuser,
+                    }
+                ],
+            },
+            {
+                "title": _("Pengingat"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Pengingat"),
+                        "icon": "timer",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:Pengingat_pengingat_changelist"),
+                        "permission": lambda request: request.user.is_superuser,
+                    }
+                ],
+            },
+            {
+                "title": _("Siswa"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Siswa"),
+                        "icon": "groups",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:Siswa_siswa_changelist"),
+                        "permission": lambda request: request.user.is_superuser,
+                    }
+                ],
+            },
+            {
+                "title": _("Transaksi"),
+                "separator": True,  # Top border
+                "collapsible": True,  # Collapsible group of links
+                "items": [
+                    {
+                        "title": _("Transaksi"),
+                        "icon": "payments",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:Transaksi_transaksi_changelist"),
+                        "permission": lambda request: request.user.is_superuser,
+                    }
+                ],
+            },
+        ],
+}
 }
